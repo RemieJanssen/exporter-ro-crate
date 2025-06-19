@@ -32,7 +32,7 @@ import be.libis.rdm.export.ROCrate.builder.ROCrateEntity;
 public class ROCrateExporter implements Exporter {
 
     // The default path from where the csv is to be read.
-    String csvPath = "./dataverse2ro-crate.csv";
+    String csvPath = "/opt/app/dataverse/exporters/dataverse2ro-crate.csv";
     /*
      * The name of the format it creates. If this format is already provided by a
      * built-in exporter, this Exporter will override the built-in one. (Note that
