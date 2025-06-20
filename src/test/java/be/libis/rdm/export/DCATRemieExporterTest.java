@@ -24,7 +24,7 @@ public class DCATRemieExporterTest {
     @BeforeAll
     public static void setUp() {
         dcatRemieExporter = new DCATRemieExporter();
-        dcatRemieExporter.setCsvPath("./dataverse2ro-crate.csv");
+        dcatRemieExporter.setCsvPath("./dataverse2dcat_remie.csv");
         outputStream = new ByteArrayOutputStream();
         dataProvider = new ExportDataProvider() {
             @Override
