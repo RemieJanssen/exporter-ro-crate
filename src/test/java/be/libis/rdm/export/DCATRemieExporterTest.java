@@ -13,18 +13,18 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import jakarta.json.JsonReader;
-import be.libis.rdm.export.ROCrate.*;
+import be.libis.rdm.export.DCATRemie.*;
 
-public class ROCrateExporterTest {
+public class DCATRemieExporterTest {
 
-    static ROCrateExporter roCrateExporter;
+    static DCATRemieExporter dcatRemieExporter;
     static OutputStream outputStream;
     static ExportDataProvider dataProvider;
 
     @BeforeAll
     public static void setUp() {
-        roCrateExporter = new ROCrateExporter();
-        roCrateExporter.setCsvPath("./dataverse2ro-crate.csv");
+        dcatRemieExporter = new DCATRemieExporter();
+        dcatRemieExporter.setCsvPath("./dataverse2dcat_remie.csv");
         outputStream = new ByteArrayOutputStream();
         dataProvider = new ExportDataProvider() {
             @Override
@@ -69,27 +69,27 @@ public class ROCrateExporterTest {
 
     @Test
     public void testGetFormatName() {
-        assertEquals("rocrate_json", roCrateExporter.getFormatName());
+        assertEquals("dcatremie", dcatRemieExporter.getFormatName());
     }
 
     @Test
     public void testGetDisplayName() {
-        assertEquals("RO-Crate", roCrateExporter.getDisplayName(new Locale("en", "US")));
+        assertEquals("DCAT-Remie", dcatRemieExporter.getDisplayName(new Locale("en", "US")));
     }
 
     @Test
     public void testIsHarvestable() {
-        assertEquals(false, roCrateExporter.isHarvestable());
+        assertEquals(false, dcatRemieExporter.isHarvestable());
     }
 
     @Test
     public void testIsAvailableToUsers() {
-        assertEquals(true, roCrateExporter.isAvailableToUsers());
+        assertEquals(true, dcatRemieExporter.isAvailableToUsers());
     }
 
     @Test
     public void testGetMediaType() {
-        assertEquals("application/ld+json; profile=\"http://www.w3.org/ns/json-ld#flattened http://www.w3.org/ns/json-ld#compacted https://w3id.org/ro/crate\"", roCrateExporter.getMediaType());
+        assertEquals("application/ld+json; profile=\"http://www.w3.org/ns/json-ld#flattened http://www.w3.org/ns/json-ld#compacted https://w3id.org/ro/crate\"", dcatRemieExporter.getMediaType());
     }
 
 

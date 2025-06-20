@@ -1,4 +1,4 @@
-package be.libis.rdm.export.ROCrate;
+package be.libis.rdm.export.DCATRemie;
 import com.google.auto.service.AutoService;
 import com.google.gson.Gson;
 import io.gdcc.spi.export.ExportDataProvider;
@@ -17,8 +17,8 @@ import jakarta.json.JsonObjectBuilder;
 import jakarta.ws.rs.core.MediaType;
 import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.PathNotFoundException;
-import be.libis.rdm.export.ROCrate.builder.ROCrateBuilder;
-import be.libis.rdm.export.ROCrate.builder.ROCrateEntity;
+import be.libis.rdm.export.DCATRemie.builder.ROCrateBuilder;
+import be.libis.rdm.export.DCATRemie.builder.ROCrateEntity;
 
 /**
  * An external RO-Crate exporter for Dataverse, with customizable mappings to
@@ -29,10 +29,10 @@ import be.libis.rdm.export.ROCrate.builder.ROCrateEntity;
 @AutoService(Exporter.class)
 // All Exporter implementations must implement this interface or the XMLExporter
 // interface that extends it.
-public class ROCrateExporter implements Exporter {
+public class DCATRemieExporter implements Exporter {
 
     // The default path from where the csv is to be read.
-    String csvPath = "/exporters/dataverse2ro-crate.csv";
+    String csvPath = "/opt/app/dataverse/exporters/dataverse2dcat_remie.csv";
     /*
      * The name of the format it creates. If this format is already provided by a
      * built-in exporter, this Exporter will override the built-in one. (Note that
@@ -41,12 +41,12 @@ public class ROCrateExporter implements Exporter {
      */
     @Override
     public String getFormatName() {
-        return "rocrate_json";
+        return "dcatremie";
     }
 
     @Override
     public String getDisplayName(Locale locale) {
-        return "RO-Crate";
+        return "DCAT-Remie";
     }
 
     @Override
@@ -85,7 +85,7 @@ public class ROCrateExporter implements Exporter {
 
     static String removeQuotations(String s) {
         /*
-         * Removes quotations from a string. 
+         * Removes quotations from a string.
          */
         while ((s.startsWith("\'") && s.endsWith("\'")) || (s.startsWith("\"") && s.endsWith("\""))) {
             s = s.substring(1, s.length() - 1).strip();
@@ -97,9 +97,9 @@ public class ROCrateExporter implements Exporter {
         /**
          * Produces a JsonPath string for getting the field in the source in the
          * dataset metadata or metadata blocks.
-         * "source" refers to the source the data is to be extracted from. 
+         * "source" refers to the source the data is to be extracted from.
          * It can be a metadatata block such as citation(datasetVersion/metadataBlocks/citation), or the dataset version itself (datasetVersion)
-         * "field" is the field within the source within which the properties will be mapped. 
+         * "field" is the field within the source within which the properties will be mapped.
          * For example, to get properties of the authors, one can use "datasetVersion/metadataBlocks/citation" as the source and "author" as the field.
          */
         if (source.isBlank() && field.isBlank()) {
@@ -265,7 +265,7 @@ public class ROCrateExporter implements Exporter {
                             currentEntity.get(targetPropertyName).add( ((LinkedHashMap<String, String>)dataObject).get("value"));
                         }  else if (dataObject instanceof String) {
                             currentEntity.get(targetPropertyName).add( (String) dataObject);
-                        }   
+                        }
 
                     } else if (dataObject instanceof List) {
                         List<Object> listObject = (List<Object>) dataObject;
@@ -306,7 +306,7 @@ public class ROCrateExporter implements Exporter {
 
                             }
                             currentEntity.get(targetPropertyName).merge(valuesToAdd);
-                        } 
+                        }
                     }
                 }
             }
@@ -324,7 +324,7 @@ public class ROCrateExporter implements Exporter {
         ArrayList<String> ids = new ArrayList<>();
         ArrayList<Map<String, String>> rows = csv.getRowsByEntity(entityName);
         String id = null;
-        
+
 
         if (entityName.equals("Root") || entityName.equals("Metadata")) {
             ids = addRootEntity(csv, jsonString, entityName, roCrateBuilder);
@@ -368,7 +368,7 @@ public class ROCrateExporter implements Exporter {
                         String dataObjectAsString = gson.toJson(dataObject);
                         ArrayList<String> referredIds = addReferredEntityAsContextual(csv, dataObjectAsString, value, roCrateBuilder);
                         currentEntity.putProperty(propertyName, referredIds, value.substring(9));
-                    } else if (mapObject.keySet().contains(value)) {                        
+                    } else if (mapObject.keySet().contains(value)) {
                         if (mapObject.get(value) instanceof String) {
                             currentEntity.get(propertyName).add((String) mapObject.get(value));
                             if (propertyName.equals("@id")) {
@@ -410,7 +410,7 @@ public class ROCrateExporter implements Exporter {
                     if (propertyName.isBlank()) {
                         continue;
                     }
-                
+
                     currentEntity.get(propertyName).add(value.startsWith("\"") ? removeQuotations(value) : (String) dataObject);
                     if (propertyName.equals("@id")) {
                         id = (String) dataObject;
@@ -432,7 +432,7 @@ public class ROCrateExporter implements Exporter {
 
                 for (String propertyName : propertyNameValue.keySet()) {
                     for (String value : propertyNameValue.get(propertyName)) {
-                        
+
                         if (value.startsWith("\"")) {
                             currentEntity.get(propertyName).add(removeQuotations(value));
                         } else if (value.contains("refersTo:")) {
@@ -470,7 +470,7 @@ public class ROCrateExporter implements Exporter {
                 if (id != null) {
                     roCrateBuilder.upsertEntity(currentEntity);
                 }
-    
+
             }
         }
         return ids;
@@ -537,7 +537,7 @@ public class ROCrateExporter implements Exporter {
                     dataEntity.get(propertyName).add((String) currentProperty);
                 } else if (currentProperty instanceof ArrayList) {
                     dataEntity.get(propertyName).merge(((ArrayList<String>) currentProperty));
-                } 
+                }
             }
             roCrateBuilder.put(fileEntityId, dataEntity);
         }

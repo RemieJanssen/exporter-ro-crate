@@ -1,0 +1,35 @@
+entityName,targetPropertyName,source,sourceField,value
+Metadata,,,,
+,__id,,,"""dcat-remie-metadata.json"""
+,__type,,,"""CreativeWork"""
+,conformsTo ,,,"refersTo:""https://w3id.org/ro/crate/1.1"""
+,about,,,refersTo:Root
+Root,,,,
+,__id,,,"""./"""
+,__type,,,"""dcat:Dataset"""
+,dct:identifier,,,persistentUrl
+,dct:title,datasetVersion/metadataBlocks/citation,title,
+,dct:description,datasetVersion/metadataBlocks/citation,dsDescription,dsDescriptionValue
+,dct:license,,,refersTo:License
+,dct:creator,,,refersTo:Author
+,dct:issued,datasetVersion,publicationDate,
+,dcat:keyword,datasetVersion/metadataBlocks/citation,keyword,keywordValue
+,dcat:theme,datasetVersion/metadataBlocks/citation,subject,
+,rivm:fundingInfo,datasetVersion/metadataBlocks/citation,grantNumber,grantNumberAgency
+,dcat:contactPoint,,,refersTo:DatasetContact
+Author,,datasetVersion/metadataBlocks/citation,author,
+,__id,,,authorName
+,__type,,,"""foaf:Agent"""
+,foaf:affilliation,,,authorAffiliation
+,foaf:name,,,authorName
+License,,datasetVersion,license,
+,__id,,,uri
+,__type,,,"""dct:License"""
+,dct:title,,,name
+,dct:description ,,,name
+,dct:identifier,,,uri
+DatasetContact,,datasetVersion/metadataBlocks/citation,datasetContact,
+,__id,,,datasetContactName
+,__type,,,"""vcard:Group"""
+,vcard:fn,,,datasetContactName
+,vcard:hasEmail,,,datasetContactEmail
