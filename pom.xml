@@ -4,7 +4,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>be.libis</groupId>
-    <artifactId>dataverse-rocrate-exporter</artifactId>
+    <artifactId>dataverse-dcat_remie-exporter</artifactId>
     <version>2.0.0</version>
     <packaging>jar</packaging>
     <properties>
@@ -49,13 +49,13 @@
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
             <version>2.9.0</version>
-        </dependency>    
+        </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.8.9</version>
         </dependency>
-        
+
     </dependencies>
     <build>
         <plugins>
@@ -67,11 +67,11 @@
             </plugin>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.7.1</version> 
+                <version>3.7.1</version>
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>be.libis.rdm.dataverse-rocrate-exporter.ROCrateExporter</mainClass> 
+                            <mainClass>be.libis.rdm.dataverse-dcat_remie-exporter.ROCrateExporter</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

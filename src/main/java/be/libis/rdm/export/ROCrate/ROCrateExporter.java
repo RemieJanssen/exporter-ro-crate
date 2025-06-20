@@ -41,12 +41,12 @@ public class ROCrateExporter implements Exporter {
      */
     @Override
     public String getFormatName() {
-        return "rocrate_json";
+        return "dcatremie";
     }
 
     @Override
     public String getDisplayName(Locale locale) {
-        return "RO-Crate";
+        return "DCAT_remie";
     }
 
     @Override
