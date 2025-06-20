@@ -69,12 +69,12 @@ public class ROCrateExporterTest {
 
     @Test
     public void testGetFormatName() {
-        assertEquals("rocrate_json", roCrateExporter.getFormatName());
+        assertEquals("dcatremie", roCrateExporter.getFormatName());
     }
 
     @Test
     public void testGetDisplayName() {
-        assertEquals("RO-Crate", roCrateExporter.getDisplayName(new Locale("en", "US")));
+        assertEquals("DCAT-Remie", roCrateExporter.getDisplayName(new Locale("en", "US")));
     }
 
     @Test

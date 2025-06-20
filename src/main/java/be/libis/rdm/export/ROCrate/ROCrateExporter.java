@@ -46,7 +46,7 @@ public class ROCrateExporter implements Exporter {
 
     @Override
     public String getDisplayName(Locale locale) {
-        return "DCAT_remie";
+        return "DCAT-Remie";
     }
 
     @Override
