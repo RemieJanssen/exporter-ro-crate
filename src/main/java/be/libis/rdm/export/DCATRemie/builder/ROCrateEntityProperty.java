@@ -1,4 +1,4 @@
-package be.libis.rdm.export.ROCrate.builder;
+package be.libis.rdm.export.DCATRemie.builder;
 
 import java.util.ArrayList;
 import jakarta.json.Json;
@@ -45,7 +45,7 @@ public class ROCrateEntityProperty {
         }
 
     }
-    
+
     public Object getValue(int i) {
         String value = values.get(i);
         if (this.refersTo!=null && !this.refersTo.isEmpty()) {
@@ -58,7 +58,7 @@ public class ROCrateEntityProperty {
 
     }
 
-    
+
 
     public ArrayList<Object> asObjects() {
         // returns a list of Object (string or JsonObject)
@@ -66,7 +66,7 @@ public class ROCrateEntityProperty {
         for (int i=0; i < values.size(); i++)
          {
             result.add(getValue(i));
-        } 
+        }
         return result;
     }
 

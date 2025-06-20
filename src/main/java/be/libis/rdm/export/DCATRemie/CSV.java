@@ -1,4 +1,4 @@
-package be.libis.rdm.export.ROCrate;
+package be.libis.rdm.export.DCATRemie;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ public class CSV {
 
     public Set<String> getEntityNames() {
         /*
-         * Gets all of the entities contained in the csv. 
+         * Gets all of the entities contained in the csv.
          */
         return rowsByEntity.keySet();
     }
@@ -25,7 +25,7 @@ public class CSV {
 
     public ArrayList<Map<String, String>> getRowsByEntity(String entityName) throws Exception {
         /*
-         * Returns all the Csv rows containing the entity type. 
+         * Returns all the Csv rows containing the entity type.
          */
 
         return this.rowsByEntity.get(entityName.strip());
@@ -64,8 +64,8 @@ public class CSV {
 
     public String getIdFieldName(String entityName) throws Exception {
         /*
-         * Returns the name of the property/field containing the id of the entity. 
-         * This is set in the CSV. 
+         * Returns the name of the property/field containing the id of the entity.
+         * This is set in the CSV.
          * For example, id field could be set as ORCID for author.
          */
         Map<String, String> idRow = getIdRow(entityName);

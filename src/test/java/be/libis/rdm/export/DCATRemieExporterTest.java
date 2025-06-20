@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import jakarta.json.JsonReader;
-import be.libis.rdm.export.ROCrate.*;
+import be.libis.rdm.export.DCATRemie.*;
 
 public class DCATRemieExporterTest {
 

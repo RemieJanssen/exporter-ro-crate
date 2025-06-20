@@ -1,4 +1,4 @@
-package be.libis.rdm.export.ROCrate.builder;
+package be.libis.rdm.export.DCATRemie.builder;
 
 import java.util.LinkedHashMap;
 import java.util.ArrayList;

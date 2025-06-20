@@ -1,4 +1,4 @@
-package be.libis.rdm.export.ROCrate;
+package be.libis.rdm.export.DCATRemie;
 import com.google.auto.service.AutoService;
 import com.google.gson.Gson;
 import io.gdcc.spi.export.ExportDataProvider;
@@ -17,8 +17,8 @@ import jakarta.json.JsonObjectBuilder;
 import jakarta.ws.rs.core.MediaType;
 import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.PathNotFoundException;
-import be.libis.rdm.export.ROCrate.builder.ROCrateBuilder;
-import be.libis.rdm.export.ROCrate.builder.ROCrateEntity;
+import be.libis.rdm.export.DCATRemie.builder.ROCrateBuilder;
+import be.libis.rdm.export.DCATRemie.builder.ROCrateEntity;
 
 /**
  * An external RO-Crate exporter for Dataverse, with customizable mappings to
