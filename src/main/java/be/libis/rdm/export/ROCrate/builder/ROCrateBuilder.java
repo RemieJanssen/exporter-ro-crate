@@ -4,7 +4,8 @@ import jakarta.json.Json;
 import jakarta.json.JsonArrayBuilder;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonObjectBuilder;
-
+import jakarta.json.JsonReader;
+import java.io.StringReader;
 
 public class ROCrateBuilder {
     final LinkedHashMap<String, ROCrateEntity> entities;
@@ -46,7 +47,7 @@ public class ROCrateBuilder {
             graph.add(properties);
         }
         String contextString =
-        JSONObject contextObject = new JSONObject("""
+        """
         {
             "dct": "http://purl.org/dc/terms/",
             "dcat": "http://www.w3.org/ns/dcat#",
@@ -60,8 +61,11 @@ public class ROCrateBuilder {
             "ex": "http://example.com/ontology/terms#",
             "foaf": "http://xmlns.com/foaf/0.1/"
         }
-        """);
-        jsonObjectBuilder.add("@context", contextObject);
+        """;
+        try (JsonReader jsonReader = Json.createReader(new StringReader(contextString))) {
+            JsonObject contextObject = jsonReader.readObject();
+            jsonObjectBuilder.add("@context", contextObject);
+        }
         jsonObjectBuilder.add("@graph", graph);
         return jsonObjectBuilder.build();
     }
