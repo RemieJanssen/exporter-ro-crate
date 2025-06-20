@@ -45,7 +45,9 @@ public class ROCrateBuilder {
             JsonObject properties = entity.asJsonArray();
             graph.add(properties);
         }
-        JSONObject contextObject = new JSONObject("""{
+        String contextString =
+        JSONObject contextObject = new JSONObject("""
+        {
             "dct": "http://purl.org/dc/terms/",
             "dcat": "http://www.w3.org/ns/dcat#",
             "xsd": "http://www.w3.org/2001/XMLSchema#",
@@ -57,7 +59,8 @@ public class ROCrateBuilder {
             "ql": "http://semweb.mmlab.be/ns/ql#",
             "ex": "http://example.com/ontology/terms#",
             "foaf": "http://xmlns.com/foaf/0.1/"
-        }""");
+        }
+        """);
         jsonObjectBuilder.add("@context", contextObject);
         jsonObjectBuilder.add("@graph", graph);
         return jsonObjectBuilder.build();
