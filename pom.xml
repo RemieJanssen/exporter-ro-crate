@@ -71,7 +71,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>be.libis.rdm.dataverse-dcat_remie-exporter.ROCrateExporter</mainClass>
+                            <mainClass>be.libis.rdm.dataverse-dcat_remie-exporter.DCATRemieExporter</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

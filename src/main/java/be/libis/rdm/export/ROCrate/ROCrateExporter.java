@@ -29,7 +29,7 @@ import be.libis.rdm.export.ROCrate.builder.ROCrateEntity;
 @AutoService(Exporter.class)
 // All Exporter implementations must implement this interface or the XMLExporter
 // interface that extends it.
-public class ROCrateExporter implements Exporter {
+public class DCATRemieExporter implements Exporter {
 
     // The default path from where the csv is to be read.
     String csvPath = "/opt/app/dataverse/exporters/dataverse2dcat_remie.csv";
